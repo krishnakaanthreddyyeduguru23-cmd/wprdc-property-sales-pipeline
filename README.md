@@ -92,6 +92,7 @@ A market sale here means the county coded it "VALID SALE", the price is at least
   - token amounts, like $10 on one parcel and $1 on the rest;
   - small differences that look like typos, like $7,160,367 vs. $7,160,067;
   - exact factor-of-10 differences, like $1,300,000 vs. $130,000, which look like a dropped zero.
+  
   All multi-parcel deeds are excluded from the market statistics, so the answer isn't affected, but I wouldn't have known about this without the check.
 - **A date in the year 212.** One record date is "212-08-01", almost certainly 2012 with a digit missing. It's a valid date as far as the parser is concerned, so my date-format check didn't catch it. A few other rows have record and sale dates exactly 10 years apart, which also look like typos. The `recorded_before_sale` warning flags 126 rows like this.
 - **Grouping by deed finds more multi-parcel sales than the county's own label.** About 1,900 more rows than are coded "MULTI-PARCEL SALE".
