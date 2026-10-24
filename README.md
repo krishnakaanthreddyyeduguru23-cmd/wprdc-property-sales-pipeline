@@ -65,6 +65,7 @@ Three of them exist because of things I found in this specific dataset:
 - **`multi_parcel_deeds_excluded`:** One deed can transfer many parcels at once. If each parcel row were treated as its own sale, prices would be badly distorted. This fails if any deed contributes more than one market sale.
 - **`multi_parcel_price_is_repeated`** (warning): I originally assumed the deed price was repeated on every parcel. This check tests that assumption, and it turned out to be wrong for 561 deeds (details below).
 - **`dates_have_plausible_year`:** Added after I found a record date with the year 212. There's exactly one such row today. The check allows up to 5 and fails beyond that, so a systemic problem would stop the pipeline.
+
 The others cover the basics: an empty or truncated download (a file with more than 10% fewer rows than the previous one fails), missing columns, dates that don't parse, missing parcel IDs, negative prices, future sale dates, duplicate sale keys, $0 and $1 sales leaking into price statistics, and internal consistency in the mart.
  
 The tests deliberately feed in bad data (a negative price, a date in an unexpected format, a truncated file, a missing column) and confirm the pipeline stops.
