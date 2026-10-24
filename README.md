@@ -104,6 +104,7 @@ Full rebuilds stop making sense at that point. I would:
 - page through the CKAN `datastore_search` API instead of downloading a single dump, with retries and backoff;
 - schedule it with Airflow or Dagster, and alert on failed checks and late data;
 - move the models and checks into dbt for lineage, documentation, and tests as code.
+
 ## What I didn't do
  
 - **Join to parcel characteristics** (square footage, bedrooms). That would allow price per square foot and help separate real appreciation from changes in which homes sold, but it goes beyond the question.
